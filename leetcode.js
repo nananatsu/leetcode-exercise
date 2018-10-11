@@ -1,43 +1,33 @@
-var countPrimes = function (n) {
-    let count = 1;
-    let tmp = [n];
-    if (n <= 2) count = 0;
-    for (let i = 3; i < n; i += 2) {
-        if (tmp[i]) continue;
-        count++;
-        for (let j = i * i; j < n; j += i) {
-            tmp[j] = true;
+var rotateString = function (A, B) {
+    let result = true;
+    let checkString = function (start) {
+        result = true;
+        let index = A.indexOf(B.charAt(0), start);
+        if (index > -1) {
+            let i = index + 1;
+            let j = 1;
+            let len = A.length;
+            if (i >= len) {
+                i = 0;
+            }
+            while (i !== index) {
+                if (A.charAt(i++) !== B.charAt(j++)) {
+                    result = false;
+                    checkString(index + 1);
+                    break;
+                }
+                if (i >= len) {
+                    i = 0;
+                }
+            }
+        } else {
+            result = false;
         }
     }
-    return count;
+    checkString(0);
+    return result;
 };
 
-console.time('计数质数');
-console.log(countPrimes(72));
-console.timeEnd('计数质数');
-
-// var countPrimes = function (n) {
-//     let count = 0;
-//     let tmp = [];
-//     if (n > 2) {
-//         count++;
-//         tmp.push(2);
-//         for (let i = 3; i < n; i = i + 2) {
-//             let sqrt = Math.ceil(Math.sqrt(i));
-//             let j = 0;
-//             let flag = true;
-//             while (tmp[j] <= sqrt) {
-//                 if (i % tmp[j] === 0) {
-//                     flag = false;
-//                     break;
-//                 }
-//                 j++;
-//             }
-//             if (flag) {
-//                 count++;
-//                 tmp.push(i);
-//             }
-//         }
-//     }
-//     return count;
-// };
+console.time('旋转字符串');
+console.log(rotateString('vcuszhlbtpmksjleuchmjffufrwpiddgyynfujnqblngzoogzg', 'fufrwpiddgyynfujnqblngzoogzgvcuszhlbtpmksjleuchmjf'));
+console.timeEnd('旋转字符串');
