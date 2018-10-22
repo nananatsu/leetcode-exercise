@@ -36,6 +36,6 @@ let node2 = new ListNode(1);
 node2.next = new ListNode(3);
 node2.next.next = new ListNode(4);
 
-console.time('两数相加');
+console.time('合并两个有序链表');
 console.log(mergeTwoLists(node1, node2));
-console.timeEnd('两数相加');
+console.timeEnd('合并两个有序链表');
