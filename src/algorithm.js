@@ -1,5 +1,5 @@
 // 冒泡排序
-// 兩兩比較找出最大（小）值再進行下一次邊里
+// 兩兩比較找出最大（小）值再進行下一次遍歷
 function bubbleSort(arr) {
     console.time('冒泡排序');
     const len = arr.length;
